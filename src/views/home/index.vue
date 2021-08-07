@@ -1,45 +1,24 @@
 <template>
     <v-app>
-        <v-navigation-drawer
-                app
-                v-model="isShowLeftBar"
-        >
-            <!-- -->
-            <v-card
-                    elevation="2"
-            >
-                <v-btn>
-                    <v-icon>
-                        fas fa-search
-                    </v-icon>
-                </v-btn>
-                {{searchTitle}}
-            </v-card>
-        </v-navigation-drawer>
-
-        <v-app-bar app>
-            <!-- -->
-            <v-btn
-                    class="mx-2"
-                    fab
-                    dark
-                    color="teal"
-                    @click.stop="isShowLeftBar = !isShowLeftBar"
-            >
-                <v-icon dark>
-                    mdi-format-list-bulleted-square
-                </v-icon>
-            </v-btn>
-        </v-app-bar>
-
+        <left-bar></left-bar>
         <!-- 根据应用组件来调整你的内容 -->
         <v-main>
-
             <!-- 给应用提供合适的间距 -->
             <v-container fluid>
-
                 <!-- 如果使用 vue-router -->
                 <router-view></router-view>
+            </v-container>
+            <v-container>
+                <v-card @click="clickCard1">
+                    <v-card-text>123</v-card-text>
+                </v-card>
+
+            </v-container>
+            <v-container>
+                <v-card>
+                    <v-card-text>456</v-card-text>
+                </v-card>
+
             </v-container>
         </v-main>
 
@@ -49,21 +28,23 @@
     </v-app>
 </template>
 
-<!--<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">-->
 <script>
+  import '@fortawesome/fontawesome-free/css/all.css';
+  import leftBar from './leftAndTopBar'
+
   export default {
+    components: {
+      leftBar,
+    },
     name: "index",
     data() {
-      return {
-        isShowLeftBar: false, //是否显示左侧菜单
-        overlayColor: "#949494", // 遮挡层颜色
-        searchTitle: '全局搜索',
-      }
+      return {}
     },
-    methods: {}
+    methods: {
+      clickCard1() {
+
+      }
+    }
   }
 </script>
 
-<style scoped>
-
-</style>
